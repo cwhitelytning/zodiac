@@ -1,0 +1,7 @@
+.vcode
+.idea
+build
+debug
+release
+cmake-build-debug
+cmake-release-debug
