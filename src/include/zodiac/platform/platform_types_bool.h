@@ -10,6 +10,8 @@
 #ifndef ZODIAC_PLATFORM_TYPE_BOOL_H
 #define ZODIAC_PLATFORM_TYPE_BOOL_H
 
+#ifndef _STDBOOL_H
+
 /**
  * @brief An enumeration for boolean values.
  *
@@ -20,5 +22,7 @@ typedef enum {
     false, /**< Represents the boolean value false. */
     true   /**< Represents the boolean value true. */
 } bool;
+
+#endif // _STDBOOL_H
 
 #endif // ZODIAC_PLATFORM_TYPE_BOOL_H

@@ -10,20 +10,25 @@
 #ifndef ZODIAC_PLATFORM_TYPE_SIZE_H
 #define ZODIAC_PLATFORM_TYPE_SIZE_H
 
-#include "platform_types_int.h" /*!< Include platform-specific integer type definitions. */
+#ifndef _SIZE_T
 
-#if defined(ZODIAC_PLATFORM_64_BIT)
 /**
  * @typedef size_t
- * @brief Type for representing sizes, defined as a 64-bit unsigned integer on a 64-bit platform.
+ * @brief Platform-specific size type.
+ *
+ * The 'size_t' type is a platform-specific unsigned integer type that is capable
+ * of representing the size of any possible object in memory.
  */
-typedef uint64_t size_t;
+
+#   ifdef ZODIAC_PLATFORM_64_BIT
+
+typedef uint64_t size_t; ///< 64-bit platform-specific size type.
+
 #elif defined(ZODIAC_PLATFORM_32_BIT)
-/**
- * @typedef size_t
- * @brief Type for representing sizes, defined as a 32-bit unsigned integer on a 32-bit platform.
- */
-typedef uint32_t size_t;
-#endif
+
+typedef uint32_t size_t; ///< 32-bit platform-specific size type.
+
+#   endif
+#endif  // _SIZE_T
 
 #endif // ZODIAC_PLATFORM_TYPE_SIZE_H

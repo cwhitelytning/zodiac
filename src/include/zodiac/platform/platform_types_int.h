@@ -9,6 +9,8 @@
 #ifndef ZODIAC_PLATFORM_TYPE_INT_H
 #define ZODIAC_PLATFORM_TYPE_INT_H
 
+#ifndef _STDINT_H
+
 /**
  * @typedef uint8_t
  * @brief Unsigned 8-bit integer.
@@ -56,5 +58,7 @@ typedef signed int int32_t;
  * @brief Signed 64-bit integer.
  */
 typedef signed long long int64_t;
+
+#endif // _STDINT_H
 
 #endif // ZODIAC_PLATFORM_TYPE_INT_H

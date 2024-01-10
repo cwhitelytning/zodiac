@@ -11,27 +11,26 @@
 #ifndef ZODIAC_PLATFORM_TYPES_SSIZE_H
 #define ZODIAC_PLATFORM_TYPES_SSIZE_H
 
-#include "platform_types_int.h"  ///< Include definitions of platform-specific integer types
+#ifndef _SSIZE_T
 
 /**
- * Conditionally define ssize_t based on the platform architecture.
- * ssize_t is intended to be a signed data type that is capable of storing
- * the size of any possible object, along with the special negative value -1
- * to indicate an error returned by some system calls.
+ * @typedef ssize_t
+ * @brief Platform-specific signed size type.
+ *
+ * The ssize_t type is a signed data type that is capable of storing the size
+ * of any possible object, along with the special negative value -1 to indicate
+ * an error returned by some system calls.
  */
 
-/**
- * @def ssize_t
- * A signed size type for 64-bit platforms.
- */
-#if defined(ZODIAC_PLATFORM_64_BIT)
-typedef int64_t ssize_t;
+#   ifdef ZODIAC_PLATFORM_64_BIT
 
-/**
- * A signed size type for 32-bit platforms.
- */
-#elif defined(ZODIAC_PLATFORM_32_BIT)
-typedef int32_t ssize_t;
-#endif
+typedef int64_t ssize_t; ///< 64-bit signed size type.
+
+#   elif defined(ZODIAC_PLATFORM_32_BIT)
+
+typedef int32_t ssize_t; ///< 32-bit signed size type.
+
+#   endif
+#endif  // _SSIZE_T
 
 #endif // ZODIAC_PLATFORM_TYPES_SSIZE_H

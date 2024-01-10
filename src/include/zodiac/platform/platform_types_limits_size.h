@@ -12,19 +12,55 @@
 #define ZODIAC_PLATFORM_TYPES_LIMITS_SIZE_H
 
 /**
- * If the platform is 64-bit, define SIZE_MAX and SIZE_MIN using the limits
- * from the 64-bit unsigned integer type.
+ * @def SIZE_MAX
+ * @brief Maximum value for a size_t type on a 64-bit platform.
+ *
+ * This macro defines the maximum value that can be represented by the size_t
+ * type on a 64-bit platform.
  */
 #if defined(ZODIAC_PLATFORM_64_BIT)
-#   define SIZE_MAX UINT64_MAX ///< Maximum value for a size_t type on a 64-bit platform.
-#   define SIZE_MIN UINT64_MIN ///< Minimum value for a size_t type on a 64-bit platform (commonly 0).
+#   ifndef SIZE_MAX
+#       define SIZE_MAX UINT64_MAX ///< Maximum value for a size_t type on a 64-bit platform.
+#   endif
+#endif
+
 /**
- * If the platform is 32-bit, define SIZE_MAX and SIZE_MIN using the limits
- * from the 32-bit unsigned integer type.
+ * @def SIZE_MIN
+ * @brief Minimum value for a size_t type on a 64-bit platform (commonly 0).
+ *
+ * This macro defines the minimum value that can be represented by the size_t
+ * type on a 64-bit platform. It is commonly set to 0.
  */
-#elif defined(ZODIAC_PLATFORM_32_BIT)
-#   define SIZE_MAX UINT32_MAX ///< Maximum value for a size_t type on a 32-bit platform.
-#   define SIZE_MIN UINT32_MIN ///< Minimum value for a size_t type on a 32-bit platform (commonly 0).
+#if defined(ZODIAC_PLATFORM_64_BIT)
+#   ifndef SIZE_MIN
+#       define SIZE_MIN UINT64_MIN ///< Minimum value for a size_t type on a 64-bit platform (commonly 0).
+#   endif
+#endif
+
+/**
+ * @def SIZE_MAX
+ * @brief Maximum value for a size_t type on a 32-bit platform.
+ *
+ * This macro defines the maximum value that can be represented by the size_t
+ * type on a 32-bit platform.
+ */
+#if defined(ZODIAC_PLATFORM_32_BIT)
+#   ifndef SIZE_MAX
+#       define SIZE_MAX UINT32_MAX ///< Maximum value for a size_t type on a 32-bit platform.
+#   endif
+#endif
+
+/**
+ * @def SIZE_MIN
+ * @brief Minimum value for a size_t type on a 32-bit platform (commonly 0).
+ *
+ * This macro defines the minimum value that can be represented by the size_t
+ * type on a 32-bit platform. It is commonly set to 0.
+ */
+#if defined(ZODIAC_PLATFORM_32_BIT)
+#   ifndef SIZE_MIN
+#       define SIZE_MIN UINT32_MIN ///< Minimum value for a size_t type on a 32-bit platform (commonly 0).
+#   endif
 #endif
 
 #endif // ZODIAC_PLATFORM_TYPES_LIMITS_SIZE_H
